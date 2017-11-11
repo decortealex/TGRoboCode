@@ -62,6 +62,12 @@ public class PushbotTeleopTank_Iterative extends OpMode{
         robot.rightDrive1.setPower(right);
         robot.rightDrive2.setPower(right);
 
+        if (gamepad1.x) {
+            robot.servoClaw.setPosition(0.5);
+        }
+        else if (gamepad1.b) {
+            robot.servoClaw.setPosition(0);
+        }
         // Use gamepad left & right Bumpers to open and close the claw
 //        if (gamepad1.right_bumper)
 //            clawOffset += CLAW_SPEED;

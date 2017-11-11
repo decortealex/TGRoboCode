@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -57,11 +58,14 @@ public class TeamHardwarePushbot
     public DcMotor  leftDrive2   = null;
     public DcMotor  rightDrive1  = null;
     public DcMotor  rightDrive2  = null;
+//    public DcMotor  liftMotor    = null;
+//    public Servo    servoArm     = null;
+    public Servo    servoClaw = null;
 //    public DcMotor  leftArm     = null;
 //    public Servo    leftClaw    = null;
 //    public Servo    rightClaw   = null;
 
-//    public static final double MID_SERVO       =  0.5 ;
+    public static final double MID_SERVO       =  0 ;
 //    public static final double ARM_UP_POWER    =  0.45 ;
 //    public static final double ARM_DOWN_POWER  = -0.45 ;
 
@@ -84,16 +88,20 @@ public class TeamHardwarePushbot
         leftDrive2  = hwMap.get(DcMotor.class, "left_drive2");
         rightDrive1 = hwMap.get(DcMotor.class, "right_drive1");
         rightDrive2 = hwMap.get(DcMotor.class, "right_drive2");
+//        liftMotor = hwMap.get(DcMotor.class, "lift_motor");
+
 //        leftArm    = hwMap.get(DcMotor.class, "left_arm");
         leftDrive1.setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         leftDrive2.setDirection(DcMotor.Direction.FORWARD);
         rightDrive1.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+//        liftMotor.setDirection(DcMotor.Direction.FORWARD);
         rightDrive2.setDirection(DcMotor.Direction.FORWARD);
 
         // Set all motors to zero power
         leftDrive1.setPower(0);
         leftDrive2.setPower(0);
         rightDrive1.setPower(0);
+//        liftMotor.setPower(0);
         rightDrive2.setPower(0);
 //        leftArm.setPower(0);
 
@@ -102,14 +110,15 @@ public class TeamHardwarePushbot
         leftDrive1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftDrive2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightDrive1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        liftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightDrive2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //        leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
-//        leftClaw  = hwMap.get(Servo.class, "left_hand");
-//        rightClaw = hwMap.get(Servo.class, "right_hand");
-//        leftClaw.setPosition(MID_SERVO);
-//        rightClaw.setPosition(MID_SERVO);
+//        servoArm  = hwMap.get(Servo.class, "servo_arm");
+        servoClaw = hwMap.get(Servo.class, "servo_extension");
+//        servoArm.setPosition(MID_SERVO);
+        servoClaw.setPosition(MID_SERVO);
     }
  }
 
